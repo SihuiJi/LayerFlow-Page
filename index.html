@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <style>
+   .footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #f5f5f5;
+    }
+
+    .footer img {
+      width: 15%;
+      margin: 0 100px;
+      object-fit: contain;
+      height: auto;
+    }
+  </style>
+	
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X8M7T669YV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X8M7T669YV');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Layerflow">
+  <title>Layerflow: A Unified Model for Layer-aware Video Generation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <!-- <link rel="stylesheet" href="./assets/css/app.css"> -->
+  <!-- <link rel="icon" href="./assets/images/favicon.svg"> -->
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./assets/js/fontawesome.all.min.js"></script>
+  <script src="./assets/js/bulma-carousel.min.js"></script>
+  <script src="./assets/js/bulma-slider.min.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/synced_video_selector.js"></script>
+</head>
+<body onresize="reload();">
+
+<section class="hero" style="padding-bottom: 0; margin-bottom: 0;">
+  <div class="hero-body" style="padding-bottom: 0; margin-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">
+              <span style="
+                        font-weight: bold;
+                        background: linear-gradient(to right, rgb(83, 128, 242),rgb(0, 187, 255), rgb(124, 247, 143));
+                        -webkit-background-clip: text;
+                        color: transparent;
+                      ">
+                Layerflow
+              </span>
+              : A Unified Model for Layer-aware Video Generation
+            </h1>
+            <div class="is-size-5 publication-authors" id="div-row-authors">
+            <span class="author-block">
+              <a href="https://sihuiji.github.io/Homepage/">Sihui Ji</a><sup>1,2</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=7QvWnzMAAAAJ&hl=zh-CN/">Hao Luo</a><sup>2,3</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a href="https://xavierchen34.github.io/">Xi Chen</a><sup>1</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a href="https://yuanpengtu.github.io/">Yuanpeng Tu</a><sup>1</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=nKr8TJwAAAAJ&hl=en">Yiyang Wang</a><sup>1</sup>&nbsp&nbsp</span>
+            <span class="author-block">
+              <a href="https://hszhao.github.io/">Hengshuang Zhao</a><sup>1</sup>&nbsp&nbsp</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>HKU &nbsp&nbsp </span>
+            <span class="author-block"><sup>2</sup>DAMO Academy, Alibaba Group &nbsp&nbsp </span>
+            <span class="author-block"><sup>3</sup>Hupan Lab &nbsp&nbsp</span>
+            <!-- <span class="author-block"><sup>4</sup>HUST</span> -->
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block"></span>
+                <!-- <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>PDF</span>
+                </a> -->
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+                <!-- <a href="https://www.youtube.com/watch?v=4YYGejumDfU"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-brands fa-youtube"></i>
+                    <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
+                  </span>
+                  <span>Video</span>
+                </a> -->
+
+                <a href="#BibTeX"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa fa-book"></i>
+                  </span>
+                  <span>BibTex</span>
+                </a>
+
+                <a href="https://github.com/SihuiJi/Layerflow"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming soon)</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<br>
+<br>
+
+<section id='sec:demo' class="hero is-small">
+  <div class="container" style="margin-top: 0; padding-top: 0;" > 
+    <!-- <div class="container-fluid" style="margin-top: 0; padding-top: 0;">
+      <h2 class="title has-text-centered is-3">Demo</h2>
+      <h2 class="title has-text-centered is-size-5" style="font-weight: 400; font-style: italic;">
+        Demo
+      </h2>
+      <div class="" style="margin-top: 0; padding-top: 0;">
+          <div class="col-2"></div>
+          <div class="col-md-8">
+              <script>
+                  activeDemoMethodPill = "zipnerf"
+                  activeDemoScenePill = document.querySelector('.demo-scene-pill.active-pill');
+                  activeDemoModePill = document.querySelector('.demo-mode-pill.active-pill');
+              </script>
+              <div class="has-text-centered text-center">
+                  <div class="video-container" style="padding: 0;">
+                      <video class="video" style="width: 72%;" m id="demoVideo0" loop playsinline autoplay muted>
+                          <source src="assets/web/gen/concat/2_concatenated.mp4" />
+                      </video>
+                  </div>
+                  <div class="text-center" style="color: black; display: none;" id="demo-mode-pills">
+                      <div class="btn-group btn-group-sm">
+                          <span class="button is-normal demo-mode-pill active" data-value="layer"
+                              onclick="selectDemoVideo(activeDemoMethodPill, activeDemoScenePill, this)">
+                              Layer Visualization
+                          </span>
+                      </div>
+                  </div>
+                  <div class="column" >
+                    <div class="columns method-labels" style="width: 80%; margin-left: 10%;">
+                      <div class="column has-text-centered method-label" id=""></div>
+                      <div class="column has-text-centered method-label">
+                        Input video
+                      </div>
+                      <div class="column has-text-centered method-label" id=""></div>
+                      <div class="column has-text-centered method-label" id=""></div>
+                      <div class="column has-text-centered method-label">
+                        Edited Video
+                      </div>
+                      <div class="column has-text-centered method-label" id=""></div>
+                    </div>
+              </div>
+
+
+                  <br>
+                  <script>
+                      video0 = document.getElementById("demoVideo0");
+                  </script>
+       
+                  <div class="pill-row scene-pills" id="demo-scene-pills">
+                    <span class="pill demo-scene-pill active" data-value="2_concatenated" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                        <img class="thumbnail-img" src="assets/web/gen/2/first_frame_segment_3.png" alt="" width="64">
+                    </span>
+                    <span class="pill demo-scene-pill" data-value="boys-beach_animation_pause-occlusion_zoomed" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                      <img class="thumbnail-img" src="assets/new/insert2.png" alt="" width="64">
+                    </span>
+                    <span class="pill demo-scene-pill" data-value="six-penguins_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                      <img class="thumbnail-img" src="assets/new/insert3.png" alt="" width="64">
+                    </span>
+                    <span class="pill demo-scene-pill" data-value="sand-draw_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                      <img class="thumbnail-img" src="assets/new/insert4.png" alt="" width="64">
+                    </span>
+                    <span class="pill demo-scene-pill" data-value="cartoon_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                      <img class="thumbnail-img" src="assets/new/insert5.png" alt="" width="64">
+                    </span>
+                    <span class="pill demo-scene-pill" data-value="pickup-desert_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                      <img class="thumbnail-img" src="assets/new/insert6.png" alt="" width="64">
+                    </span>
+                    <span class="pill demo-scene-pill" data-value="two-skaters_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                      <img class="thumbnail-img" src="assets/new/insert7.png" alt="" width="64">
+                    </span>
+                    <span class="pill demo-scene-pill" data-value="ice-skating_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                      <img class="thumbnail-img" src="assets/new/insert8.png" alt="" width="64">
+                    </span>
+                    <span class="pill demo-scene-pill" data-value="people-jumping_animation" onclick="selectDemoVideo(activeDemoMethodPill, this, activeDemoModePill)">
+                      <img class="thumbnail-img" src="assets/thumbnails/people-jumping.png" alt="" width="96">
+                    </span>
+                    
+                  </div> -->
+                  <h2 class="title has-text-centered is-size-5 " style="font-weight: 400; line-height: 32px;">
+                    <!-- Our method can insert/replace diverse objects into the videos with precise motion alignment with the given <br> motion trajectories, where the appearance details of the reference object can be accurately preserved as well. -->
+                    We present Layerflow, a unified solution for layer-aware video generation.  <br> Given per-layer prompts, Layerflow generates videos for the transparent foreground, clean background, and blended scene.  <br> 
+                    It enables a wide range of applications for users, including multi-layer video generation, multi-layer video decomposition,  <br>foreground-conditioned layer generation, and background-conditioned layer generation. 
+                    (Scroll to view more videos)
+                    <!-- It also supports versatile variants like decomposing a blended video or generating the background for the given foreground and vice versa. -->
+                  </h2>
+                  <!-- <script>
+                      activeDemoMethodPill = document.querySelector('.demo-method-pill.active-pill');
+                      activeDemoScenePill = document.querySelector('.demo-scene-pill.active-pill');
+                      activeDemoModePill = document.querySelector('.demo-mode-pill.active-pill');
+                  </script> -->
+              </div>
+          </div>
+          <div class="col-2"></div>
+          
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id='sec-sidebyside-edit' class="hero is-light is-small">
+  <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+    Multi-layer Video Generation
+  </h2>
+
+  <div class="hero-body">
+
+    <div class="container"  style="padding-left: 5%; padding-right: 5%;">
+      <!-- <h2 class="has-text-centered title">
+          <b>Video editing</b>
+      </h2> -->
+      <div id="sidebyside-carousel" class="carousel results-carousel">
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/2/2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/16/16_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/19/19_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/20/20_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/25/25_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/30/30_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+      </div>
+      
+    </div>
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">    
+      <!-- Our Layerflow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
+      (Scroll to view more videos) -->
+      Take three layer-wise descriptions as input, the generated results of <br> foreground, background,
+      and blended videos are shown above.
+    </h2>
+    <!-- <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+      Multi-layer Video Generation
+    </h2> -->
+  </div>
+</section>
+<br>
+<br>
+
+
+
+
+
+
+
+
+<section id='sec-edit' class="hero is-light is-small">
+  <div class="hero-body">
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+      Our VideoAnydoor enables a wide range of applications for users, including video virtual tryon, video face swapping, logo insertion, and multi-region editing.
+      (Scroll to view more videos)
+    </h2>
+    <div class="container">
+      <div id="demo-carousel" class="carousel results-carousel">
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="300%">
+              <source src="assets/web/gen/2/2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/2/2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+      </div>
+      
+    </div>
+
+
+
+    
+
+  </div>
+</section>
+
+<section id='sec-sidebyside-edit' class="hero is-light is-small">
+  <div class="hero-body">
+    
+    <div class="container"  style="padding-left: 5%; padding-right: 5%;">
+      <!-- <h2 class="has-text-centered title">
+          <b>Video editing</b>
+      </h2> -->
+      <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+        Multi-layer Video Decomposition
+      </h2>
+      <div id="sidebyside-carousel" class="carousel results-carousel">
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/seg/1/1_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/seg/7/7_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <!-- <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/seg/8/8_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div> -->
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/seg/9/9_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/seg/23/23_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/seg/31/31_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <!-- <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/seg/43/43_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div> -->
+      </div>
+      
+    </div>
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">    
+      <!-- Our Layerflow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
+      (Scroll to view more videos) -->
+      Take three layer-wise descriptions and a blended video as input, <br> the decomposition results of foreground, background
+      videos are shown above.
+    </h2>
+    <!-- <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+      Multi-layer Video Decomposition
+    </h2> -->
+  </div>
+</section>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+<section id='sec-edit' class="hero is-light is-small">
+  <div class="hero-body">
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+      Our VideoAnydoor enables a wide range of applications for users, including video virtual tryon, video face swapping, logo insertion, and multi-region editing.
+      (Scroll to view more videos)
+    </h2>
+    <div class="container">
+      <div id="demo-carousel" class="carousel results-carousel">
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/2/2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/2/2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+      </div>
+      
+    </div>
+
+
+
+    
+
+  </div>
+</section>
+
+<section id='sec-sidebyside-edit' class="hero is-light is-small">
+  <div class="hero-body">
+    
+    <div class="container"  style="padding-left: 5%; padding-right: 5%;">
+      <!-- <h2 class="has-text-centered title">
+          <b>Video editing</b>
+      </h2> -->
+      <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+        Foreground-conditioned Layer Generation
+      </h2>
+      <div id="sidebyside-carousel" class="carousel results-carousel">
+          <!-- <div class="item" width="100%" height="100%" style="padding-top: 8%; padding-bottom: 8%;"> -->
+          <div class="item">
+            <!-- <video poster="" autoplay muted loop playsinline width="100%" height="100%" style="padding-top: 5%; padding-bottom: 5%;"> -->
+              <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/fg2bg/1/1_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/fg2bg/2/2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/fg2bg/32/32_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/fg2bg/34/34_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/fg2bg/35/35_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/fg2bg/36/36_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/fg2bg/37/37_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+      </div>
+    </div>
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">    
+      <!-- Our Layerflow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
+      (Scroll to view more videos) -->
+      Take three layer-wise descriptions and a foreground video as input, <br> the generated results of background, blended
+      videos are shown above.
+    </h2>
+    <!-- <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+      Foreground-conditioned Layer Generation
+    </h2> -->
+  </div>
+</section>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+<section id='sec-edit' class="hero is-light is-small">
+  <div class="hero-body">
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">
+      Our VideoAnydoor enables a wide range of applications for users, including video virtual tryon, video face swapping, logo insertion, and multi-region editing.
+      (Scroll to view more videos)
+    </h2>
+    <div class="container">
+      <div id="demo-carousel" class="carousel results-carousel">
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/2/2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="100%">
+              <source src="assets/web/gen/2/2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+      </div>
+      
+    </div>
+
+
+
+    
+
+  </div>
+</section>
+
+<section id='sec-sidebyside-edit' class="hero is-light is-small">
+  <div class="hero-body">
+    
+    <div class="container"  style="padding-left: 5%; padding-right: 5%;">
+      <!-- <h2 class="has-text-centered title">
+          <b>Video editing</b>
+      </h2> -->
+      <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+        Background-conditioned Layer Generation
+      </h2>
+      <div id="sidebyside-carousel" class="carousel results-carousel">
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="200%">
+              <source src="assets/web/bg2fg-rgba/1-1/1-1_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="200%">
+              <source src="assets/web/bg2fg-rgba/1-2/1-2_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="200%">
+              <source src="assets/web/bg2fg-rgba/3/3_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="item">
+            <video poster="" autoplay muted loop playsinline height="200%">
+              <source src="assets/web/bg2fg-rgba/7/7_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <!-- <div class="item">
+            <video poster="" autoplay muted loop playsinline height="200%">
+              <source src="assets/web/bg2fg-rgba/1-1/1-1_concatenated.mp4"
+                      type="video/mp4">
+            </video>
+          </div> -->
+      </div>
+      
+    </div>
+    <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">    
+      <!-- Our Layerflow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
+      (Scroll to view more videos) -->
+      Take three layer-wise descriptions and a background video as input, <br> the generated results of foreground, blended
+      videos are shown above.
+    </h2>
+    <!-- <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+      Background-conditioned Layer Generation
+    </h2> -->
+  </div>
+</section>
+<br>
+<br>
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+
+<section id='sec:method' class="hero is-small" style="background-color: #ffffff;">
+  <div class="container"> 
+    
+    <div class="container-fluid">
+      <h2 class="title has-text-centered is-3">Abstract</h2>
+      <div class="has-text-justified  text-description">
+        <p>We present Layerflow a unified solution for layer-aware video generation. Given per-layer prompts, Layerflow generates videos for the transparent foreground, clean background, and blended scene. It also supports versatile variants like decomposing a blended video or generating the background for the given foreground and vice versa. Starting from a text-to-video diffusion transformer, we organize the videos of different layers as sub-clips, and leverage layer embeddings to distinguish each clip and the corresponding layer-wise prompts. In this way, we seamlessly support the aforementioned variants in one unified framework. For the lack of high-quality layer-wise training videos, we design a multi-stage training strategy to accommodate static images with high-quality layer annotations. Specifically, we first train the model with low-quality video data. Then, we tune a motion LoRA to make the model compatible with static frames. Afterward, we train the content LoRA on the mixture of image data with high-quality layered images along with copy-pasted video data. During inference, we remove the motion LoRA thus generating smooth videos with desired layers. </p>	
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+<section id='sec:method' class="hero is-small" style="background-color: #ffffff;">
+  <div class="container"> 
+    
+    <div class="container-fluid">
+      <h2 class="title has-text-centered is-3">Overall Pipeline</h2>
+
+      <div id='subsec:method-overview' class="row py-5 mt-5 bg-dark">
+       <img src="data/images/pipeline2.png" style="width: 100%;"/> 
+      </div>
+
+      <div class="has-text-justified  text-description">
+        <p>Overall pipeline of Layerflow, which allows for the production of multi-layer videos including transparent foreground, undisturbed background and blended sequences. We organize videos of different layers as sub-clips and concatenate them to form a whole sequence to be encoded by VAE encoder. At the same time, index modification is conducted before prompts are processed by the T5 encoder, then layer embedding is added to text embeddings to impart layer awareness.  All the visual patches and text embeddings are fed into transformer blocks as a long tensor. In the process of training, a base model is firstly trained on crudely made multi-layer video data for initial layered generation ability. Motion LoRA tuning prepares the model with accommodations for frozen video and Content LoRA can then borrow knowledge from both high-quality duplicated multi-layer images and copy-pasted video data for improving layer-aware synthesis quality as well as maintenance of motion dynamics.</p>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <section class="section" id="sec:youtube-embed">
+  <div class="container is-max-desktop">
+    <h2 class="title has-text-centered is-size-3" style="font-weight: 1000; line-height: 32px;  padding-top: 20px;">
+      Video Introduction
+    </h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="column" style="margin-left: 10px;">
+        <iframe  id="div-container-embed-video" width="99%" height="340%" 
+          src="https://www.youtube.com/embed/4YYGejumDfU?si=d6c13SMBsNYAUH9-">
+        </iframe>
+      </div>
+
+    </div>
+    <br>
+
+
+  </div>
+
+</section> -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre>
+      <!-- <code>@misc{tu2025videoanydoorhighfidelityvideoobject,
+      title={VideoAnydoor: High-fidelity Video Object Insertion with Precise Motion Control}, 
+      author={Yuanpeng Tu and Hao Luo and Xi Chen and Sihui Ji and Xiang Bai and Hengshuang Zhao},
+      year={2025},
+      journal={arXiv preprint arXiv:2501.01427}, 
+}</code> -->
+</pre>
+  </div>
+</section>
+
+
+<!-- <section class="section" id="compancy">
+  <div class="footer">
+    <img src="assets/hku.jpg" alt="Image 1">
+    <img src="assets/alibaba.png" alt="Image 2">
+    <img src="assets/hust.png" alt="Image 3">
+  </div>
+  
+  
+  <script>
+    // 获取所有图片
+    const images = document.querySelectorAll('.footer img');
+  
+    // 计算最大高度
+    let maxHeight = 0;
+    images.forEach(image => {
+      const imgHeight = image.offsetHeight;
+      if (imgHeight > maxHeight) {
+        maxHeight = imgHeight;
+      }
+    });
+  
+    // 设置所有图片高度为最大高度
+    images.forEach(image => {
+      image.style.height = maxHeight + 'px';
+    });
+  </script>
+  </section> -->
+	
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="content is-centered">
+        <p>
+          This template is borrowed from <a
+          href="https://github.com/nerfies/nerfies.github.io">nerfies</a>
+          and <a href="https://reconfusion.github.io/">ReconFusion</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
