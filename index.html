@@ -29,8 +29,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <meta name="description"
-        content="Layerflow">
-  <title>Layerflow: A Unified Model for Layer-aware Video Generation</title>
+        content="LayerFlow">
+  <title>LayerFlow: A Unified Model for Layer-aware Video Generation</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -76,7 +76,7 @@
                         -webkit-background-clip: text;
                         color: transparent;
                       ">
-                Layerflow
+                LayerFlow
               </span>
               : A Unified Model for Layer-aware Video Generation
             </h1>
@@ -135,7 +135,7 @@
                   <span>BibTex</span>
                 </a>
 
-                <a href="https://github.com/SihuiJi/Layerflow"
+                <a href="https://github.com/SihuiJi/LayerFlow"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -238,7 +238,7 @@
                   </div> -->
                   <h2 class="title has-text-centered is-size-5 " style="font-weight: 400; line-height: 32px;">
                     <!-- Our method can insert/replace diverse objects into the videos with precise motion alignment with the given <br> motion trajectories, where the appearance details of the reference object can be accurately preserved as well. -->
-                    We present Layerflow, a unified solution for layer-aware video generation.  <br> Given per-layer prompts, Layerflow generates videos for the transparent foreground, clean background, and blended scene.  <br> 
+                    We present LayerFlow, a unified solution for layer-aware video generation.  <br> Given per-layer prompts, LayerFlow generates videos for the transparent foreground, clean background, and blended scene.  <br> 
                     It enables a wide range of applications for users, including multi-layer video generation, multi-layer video decomposition,  <br>foreground-conditioned layer generation, and background-conditioned layer generation. 
                     (Scroll to view more videos)
                     <!-- It also supports versatile variants like decomposing a blended video or generating the background for the given foreground and vice versa. -->
@@ -313,7 +313,7 @@
       
     </div>
     <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">    
-      <!-- Our Layerflow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
+      <!-- Our LayerFlow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
       (Scroll to view more videos) -->
       Take three layer-wise descriptions as input, the generated results of <br> foreground, background,
       and blended videos are shown above.
@@ -421,7 +421,7 @@
       
     </div>
     <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">    
-      <!-- Our Layerflow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
+      <!-- Our LayerFlow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
       (Scroll to view more videos) -->
       Take three layer-wise descriptions and a blended video as input, <br> the decomposition results of foreground, background
       videos are shown above.
@@ -531,7 +531,7 @@
       </div>
     </div>
     <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">    
-      <!-- Our Layerflow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
+      <!-- Our LayerFlow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
       (Scroll to view more videos) -->
       Take three layer-wise descriptions and a foreground video as input, <br> the generated results of background, blended
       videos are shown above.
@@ -631,7 +631,7 @@
       
     </div>
     <h2 class="title has-text-centered is-size-5" style="font-weight: 400; line-height: 32px; font-style: italic; padding-top: 20px;">    
-      <!-- Our Layerflow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
+      <!-- Our LayerFlow enables a wide range of applications for users, including multi-layer video generation, <br> multi-layer video decomposition, foreground-conditioned layer generation, and background-conditioned layer generation. 
       (Scroll to view more videos) -->
       Take three layer-wise descriptions and a background video as input, <br> the generated results of foreground, blended
       videos are shown above.
@@ -661,7 +661,7 @@
     <div class="container-fluid">
       <h2 class="title has-text-centered is-3">Abstract</h2>
       <div class="has-text-justified  text-description">
-        <p>We present Layerflow a unified solution for layer-aware video generation. Given per-layer prompts, Layerflow generates videos for the transparent foreground, clean background, and blended scene. It also supports versatile variants like decomposing a blended video or generating the background for the given foreground and vice versa. Starting from a text-to-video diffusion transformer, we organize the videos of different layers as sub-clips, and leverage layer embeddings to distinguish each clip and the corresponding layer-wise prompts. In this way, we seamlessly support the aforementioned variants in one unified framework. For the lack of high-quality layer-wise training videos, we design a multi-stage training strategy to accommodate static images with high-quality layer annotations. Specifically, we first train the model with low-quality video data. Then, we tune a motion LoRA to make the model compatible with static frames. Afterward, we train the content LoRA on the mixture of image data with high-quality layered images along with copy-pasted video data. During inference, we remove the motion LoRA thus generating smooth videos with desired layers. </p>	
+        <p>We present LayerFlow a unified solution for layer-aware video generation. Given per-layer prompts, LayerFlow generates videos for the transparent foreground, clean background, and blended scene. It also supports versatile variants like decomposing a blended video or generating the background for the given foreground and vice versa. Starting from a text-to-video diffusion transformer, we organize the videos of different layers as sub-clips, and leverage layer embeddings to distinguish each clip and the corresponding layer-wise prompts. In this way, we seamlessly support the aforementioned variants in one unified framework. For the lack of high-quality layer-wise training videos, we design a multi-stage training strategy to accommodate static images with high-quality layer annotations. Specifically, we first train the model with low-quality video data. Then, we tune a motion LoRA to make the model compatible with static frames. Afterward, we train the content LoRA on the mixture of image data with high-quality layered images along with copy-pasted video data. During inference, we remove the motion LoRA thus generating smooth videos with desired layers. </p>	
       </div>
 
       </div>
@@ -693,7 +693,7 @@
       </div>
 
       <div class="has-text-justified  text-description">
-        <p>Overall pipeline of Layerflow, which allows for the production of multi-layer videos including transparent foreground, undisturbed background and blended sequences. We organize videos of different layers as sub-clips and concatenate them to form a whole sequence to be encoded by VAE encoder. At the same time, index modification is conducted before prompts are processed by the T5 encoder, then layer embedding is added to text embeddings to impart layer awareness.  All the visual patches and text embeddings are fed into transformer blocks as a long tensor. In the process of training, a base model is firstly trained on crudely made multi-layer video data for initial layered generation ability. Motion LoRA tuning prepares the model with accommodations for frozen video and Content LoRA can then borrow knowledge from both high-quality duplicated multi-layer images and copy-pasted video data for improving layer-aware synthesis quality as well as maintenance of motion dynamics.</p>
+        <p>Overall pipeline of LayerFlow, which allows for the production of multi-layer videos including transparent foreground, undisturbed background and blended sequences. We organize videos of different layers as sub-clips and concatenate them to form a whole sequence to be encoded by VAE encoder. At the same time, index modification is conducted before prompts are processed by the T5 encoder, then layer embedding is added to text embeddings to impart layer awareness.  All the visual patches and text embeddings are fed into transformer blocks as a long tensor. In the process of training, a base model is firstly trained on crudely made multi-layer video data for initial layered generation ability. Motion LoRA tuning prepares the model with accommodations for frozen video and Content LoRA can then borrow knowledge from both high-quality duplicated multi-layer images and copy-pasted video data for improving layer-aware synthesis quality as well as maintenance of motion dynamics.</p>
       </div>
 
       </div>
